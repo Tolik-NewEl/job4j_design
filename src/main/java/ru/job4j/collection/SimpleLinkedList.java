@@ -12,8 +12,6 @@ public class SimpleLinkedList<E> implements List<E> {
     public void add(E value) {
         Node<E> newNode = new Node<>(value);
         if (first == null) {
-            newNode.next = null;
-            newNode.prev = null;
             first = newNode;
         } else {
             last.next = newNode;
