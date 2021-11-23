@@ -11,6 +11,10 @@ public class SimpleArrayList<T> implements List<T> {
         this.container = (T[]) new Object[capacity];
     }
 
+    public SimpleArrayList() {
+        this.container = (T[]) new Object[10];
+    }
+
     private T[] arrayIncrease(T[] array) {
         return Arrays.copyOf(array, array.length * 2);
     }
