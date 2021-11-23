@@ -3,7 +3,6 @@ package ru.job4j.set;
 import ru.job4j.list.SimpleArrayList;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 
 public class SimpleSet<T> implements Set<T> {
@@ -33,20 +32,6 @@ public class SimpleSet<T> implements Set<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return new Iterator<T>() {
-            int cursor = 0;
-            @Override
-            public boolean hasNext() {
-                return cursor < set.size();
-            }
-
-            @Override
-            public T next() {
-                if (!hasNext()) {
-                    throw new NoSuchElementException();
-                }
-                return set.get(cursor++);
-            }
-        };
+        return set.iterator();
     }
 }
