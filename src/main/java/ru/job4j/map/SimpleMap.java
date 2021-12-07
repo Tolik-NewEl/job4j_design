@@ -34,12 +34,13 @@ public class SimpleMap<K, V> implements Map<K, V> {
     }
 
     private int indexFor(K key) {
-        return hash(key) & (table.length - 1);
+        return hash(key) & (capacity - 1);
     }
 
     private void expand() {
+        capacity *= 2;
         MapEntry<K, V>[] oldTable = table;
-        table = new MapEntry[oldTable.length * 2];
+        table = new MapEntry[capacity];
         count = 0;
         for (MapEntry<K, V> kvMapEntry : oldTable) {
             if (kvMapEntry != null) {
