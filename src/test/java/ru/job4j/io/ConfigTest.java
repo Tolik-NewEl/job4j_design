@@ -36,7 +36,7 @@ public class ConfigTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void whenIncorrectPair() {
-        String path = "./data/pair_incorrect.properties";
+        String path = "./data/pair_incorrects.properties";
         Config config = new Config(path);
         config.load();
     }
