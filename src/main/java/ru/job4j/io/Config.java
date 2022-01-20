@@ -27,11 +27,11 @@ public class Config {
     }
 
     private void split(String input) {
-        String[] tmp = input.split("=");
-        if (tmp.length == 2 && (!tmp[0].isBlank() && !tmp[1].isBlank())) {
+        if (!input.startsWith("=") && !input.endsWith("=")) {
+            String[] tmp = input.split("=");
             values.put(tmp[0], tmp[1]);
         } else {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("Wrong input!");
         }
     }
 
