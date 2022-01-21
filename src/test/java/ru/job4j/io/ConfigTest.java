@@ -40,4 +40,11 @@ public class ConfigTest {
         Config config = new Config(path);
         config.load();
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void whenDoubleSignEqual() {
+        String path = "./data/double_equal_sign.properties";
+        Config config = new Config(path);
+        config.load();
+    }
 }

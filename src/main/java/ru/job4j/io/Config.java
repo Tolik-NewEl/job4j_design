@@ -27,7 +27,8 @@ public class Config {
     }
 
     private void split(String input) {
-        if (!input.startsWith("=") && !input.endsWith("=")) {
+        if (!input.startsWith("=") && !input.endsWith("=")
+                && !input.contains("==")) {
             String[] tmp = input.split("=");
             values.put(tmp[0], tmp[1]);
         } else {
