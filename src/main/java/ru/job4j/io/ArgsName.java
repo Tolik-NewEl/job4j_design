@@ -20,7 +20,7 @@ public class ArgsName {
         }
         for (int i = 0; i < args.length; i++) {
             String[] tmp = args[i].split("=", 2);
-            if (tmp.length != 2 || tmp[1].isEmpty() || !tmp[0].startsWith("-")) {
+            if (tmp.length != 2 || tmp[0].length() < 1 || !tmp[0].startsWith("-")) {
                 throw new IllegalArgumentException("Incorrect input parameters!");
             }
             values.put(tmp[0].substring(1), tmp[1]);
