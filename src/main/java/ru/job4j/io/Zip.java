@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
@@ -34,9 +33,7 @@ public class Zip {
         String exclude = argsName.get("e");
         File output = new File(argsName.get("o"));
         Search search = new Search();
-        List<Path> files = search.search(dir, s -> s.toFile().isFile())
-                .stream().filter(s -> !s.toFile().getName().endsWith(exclude))
-                .collect(Collectors.toList());
+        List<Path> files = search.search(dir, s -> !s.toFile().getName().endsWith(exclude));
         zip.packFiles(files, output);
     }
 
