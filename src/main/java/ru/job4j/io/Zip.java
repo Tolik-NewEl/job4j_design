@@ -34,12 +34,10 @@ public class Zip {
         String exclude = argsName.get("e");
         File output = new File(argsName.get("o"));
         Search search = new Search();
-        List<Path> files = search.search(dir, s -> s.toFile().isFile());
-        List<Path> excludeFiles = files
-                .stream()
-                .filter(s -> !s.toFile().getName().endsWith(exclude))
+        List<Path> files = search.search(dir, s -> s.toFile().isFile())
+                .stream().filter(s -> !s.toFile().getName().endsWith(exclude))
                 .collect(Collectors.toList());
-        zip.packFiles(excludeFiles, output);
+        zip.packFiles(files, output);
     }
 
     public void validate(ArgsName argsName) {
