@@ -25,15 +25,18 @@ public class ConsoleChat {
         boolean status = true;
         boolean run = true;
         while (run) {
-            System.out.println("User word: ");
+            System.out.print("User: ");
             String userWord = in.nextLine();
             rslLog.add("user say's: " + userWord);
+            String bot = botPhrases.get((int) (Math.random() * botPhrases.size()));
             switch (userWord) {
                 case STOP -> {
                     status = false;
                 }
                 case CONTINUE -> {
                     status = true;
+                    System.out.println("ChatBot: " + bot);
+                    rslLog.add("bot answer's: " + bot);
                 }
                 case OUT -> {
                     saveLog(rslLog);
@@ -41,8 +44,7 @@ public class ConsoleChat {
                 }
                 default -> {
                     if (status) {
-                        String bot = botPhrases.get((int) (Math.random() * botPhrases.size()));
-                        System.out.println(bot);
+                        System.out.println("ChatBot: " + bot);
                         rslLog.add("bot answer's: " + bot);
                     }
                 }
@@ -71,7 +73,7 @@ public class ConsoleChat {
     }
 
     public static void main(String[] args) {
-        ConsoleChat cc = new ConsoleChat("./bot.txt", "C:\\Projects\\job4j_design\\data\\botAnswers.txt");
+        ConsoleChat cc = new ConsoleChat("./bot.txt", "./data/botAnswers.txt");
         cc.run();
     }
 }
