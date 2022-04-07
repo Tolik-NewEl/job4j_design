@@ -1,28 +1,28 @@
 package ru.job4j.serialization.json;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import java.io.StringReader;
+import java.io.StringWriter;
 
 public class Jsonexample {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         final Smartphone smartphone = new Smartphone(true, 64,
                 new String[] {"external", "internal"}, new Contact("999-999-999"));
-
-        final Gson gson = new GsonBuilder().create();
-        System.out.println(gson.toJson(smartphone));
-
-        final String smartphoneJson =
-                "{"
-                        + "\"available\":false,"
-                        + "\"memsize\":128,"
-                        + "\"contact\":"
-                        + "{"
-                        + "\"phone\":\"999-888-888\""
-                        + "},"
-                        + "\"memory\":"
-                        + "[\"ext\",\"int\"]"
-                        + "}";
-        final Smartphone smartphoneMod = gson.fromJson(smartphoneJson, Smartphone.class);
-        System.out.println(smartphoneMod);
+        JAXBContext context = JAXBContext.newInstance(Smartphone.class);
+        Marshaller marshaller = context.createMarshaller();
+        marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+        String xml = "";
+        try (StringWriter writer = new StringWriter()) {
+            marshaller.marshal(smartphone, writer);
+            xml = writer.getBuffer().toString();
+            System.out.println(xml);
+        }
+        Unmarshaller unmarshaller = context.createUnmarshaller();
+        try (StringReader reader = new StringReader(xml)) {
+            Smartphone result = (Smartphone) unmarshaller.unmarshal(reader);
+            System.out.println(result);
+        }
     }
 }
