@@ -46,7 +46,7 @@ public class Smartphone {
         final Smartphone smartphone = new Smartphone(true, 64,
                 new String[]{"external", "internal"}, new Contact("999-999-999"));
 
-        JAXBContext context = JAXBContext.newInstance(Person.class);
+        JAXBContext context = JAXBContext.newInstance(Smartphone.class);
         Marshaller marshaller = context.createMarshaller();
         marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 
