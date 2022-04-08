@@ -16,15 +16,15 @@ public class Jsonexample {
         JSONArray jsonMemorys = new JSONArray(list);
 
         final Smartphone smartphone = new Smartphone(true, 64,
-                new String[] {"external", "internal"}, new Contact("999-999-999"));
+                new String[]{"external", "internal"}, new Contact("999-999-999"));
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("available", smartphone.isAvailable());
         jsonObject.put("memsize", smartphone.getMemsize());
         jsonObject.put("memory", jsonMemorys);
         jsonObject.put("contact", jsonContact);
 
-        System.out.println(jsonObject.toString());
+        System.out.println(jsonObject);
 
-        System.out.println(new JSONObject(smartphone).toString());
+        System.out.println(new JSONObject(smartphone));
     }
 }

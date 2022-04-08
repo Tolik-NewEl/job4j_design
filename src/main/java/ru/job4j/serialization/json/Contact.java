@@ -16,6 +16,10 @@ public class Contact {
     public Contact() {
     }
 
+    public String getPhone() {
+        return phone;
+    }
+
     @Override
     public String toString() {
         return "Contact{"

@@ -40,6 +40,14 @@ public class Smartphone {
         return memsize;
     }
 
+    public String[] getMemory() {
+        return memory;
+    }
+
+    public Contact getContact() {
+        return contact;
+    }
+
     @Override
     public String toString() {
         return "Smartphone{"
@@ -63,6 +71,7 @@ public class Smartphone {
             String result = writer.getBuffer().toString();
             System.out.println(result);
         } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }
