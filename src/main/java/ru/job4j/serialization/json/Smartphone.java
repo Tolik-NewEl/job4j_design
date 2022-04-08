@@ -32,6 +32,14 @@ public class Smartphone {
     public Smartphone() {
     }
 
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public int getMemsize() {
+        return memsize;
+    }
+
     @Override
     public String toString() {
         return "Smartphone{"
