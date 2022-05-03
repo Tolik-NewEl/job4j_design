@@ -47,6 +47,6 @@ create table comments (
 create table attachs (
 	id serial primary key,
 	name text,
-	size ind,
+	size int,
 	item_id int references item(id)
 );
